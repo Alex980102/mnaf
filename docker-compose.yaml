@@ -1,10 +1,10 @@
 version: "3"
 services:
-  auth_service:
-    build: auth_service
-    ports:
-      - target: 3999
-        published: 3999
+  # auth_service:
+  #   build: auth_service
+  #   ports:
+  #     - target: 3999
+  #       published: 3999
 
   mongo:
     image: mongo
