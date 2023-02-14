@@ -36,8 +36,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    // console.log(this.loginForm.value);
-    if (this.loginForm.valid) {
+    if (this.loginForm.get('email').invalid) {
+      if (this.loginForm.get('email').errors.required) {
+        Swal.fire('Error', 'El email es requerido', 'error');
+      } else if (this.loginForm.get('email').errors.email) {
+        Swal.fire('Error', 'El email no es válido', 'error');
+      }
+    } else if (this.loginForm.get('password').invalid) {
+      if (this.loginForm.get('password').errors.required) {
+        Swal.fire('Error', 'La contraseña es requerida', 'error');
+      }
+    } else {
       this.usuarioService
         .login(this.loginForm.value)
         .pipe(
